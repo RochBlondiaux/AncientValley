@@ -1,0 +1,93 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>me.rochblondiaux</groupId>
+    <artifactId>ancientvalley</artifactId>
+    <version>1.0-ALPHA</version>
+    <packaging>jar</packaging>
+
+    <name>AncientValley</name>
+    <url>https://www.roch-blondiaux.com</url>
+
+    <developers>
+        <developer>
+            <id>Kiwix</id>
+            <name>Roch Blondiaux</name>
+            <email>contact@roch-blondiaux.com</email>
+            <url>https://www.roch-blondiaux.com</url>
+            <roles>
+                <role>Lead Developer</role>
+                <role>Founder</role>
+            </roles>
+            <timezone>UTC+2</timezone>
+        </developer>
+    </developers>
+
+    <!-- Properties -->
+    <properties>
+        <!-- Main Class -->
+        <main.class>me.rochblondiaux.ancientvalley.App</main.class>
+
+        <!-- JVM -->
+        <java.source.version>17</java.source.version>
+        <java.target.version>${java.source.version}</java.target.version>
+    </properties>
+
+    <!-- Dependencies -->
+    <dependencies>
+        <!-- Log4J -->
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>2.18.0</version>
+        </dependency>
+        <!-- Lombok -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.24</version>
+            <scope>provided</scope>
+        </dependency>
+        <!-- LITIEngine -->
+        <dependency>
+            <groupId>de.gurkenlabs</groupId>
+            <artifactId>litiengine</artifactId>
+            <version>0.5.2</version>
+        </dependency>
+    </dependencies>
+
+    <!-- Build -->
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                            <classpathPrefix>libs/</classpathPrefix>
+                            <mainClass>
+                                ${main.class}
+                            </mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.0.0-M5</version>
+            </plugin>
+        </plugins>
+    </build>
+</project>

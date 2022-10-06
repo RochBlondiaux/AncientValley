@@ -1,13 +1,13 @@
 package me.rochblondiaux.ancientvalley;
 
 /**
- * Hello world!
+ * AncientValley
  *
+ * @author Roch Blondiaux
+ * @date 04/10/2022
  */
-public class App
-{
-    public static void main( String[] args )
-    {
-        System.out.println( "Hello World!" );
+public class App {
+    public static void main(String[] args) {
+        new AncientValley(args);
     }
 }

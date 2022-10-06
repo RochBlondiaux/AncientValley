@@ -1,5 +1,6 @@
 package me.rochblondiaux.ancientvalley.utils;
 
+import de.gurkenlabs.litiengine.graphics.Spritesheet;
 import de.gurkenlabs.litiengine.resources.Images;
 import de.gurkenlabs.litiengine.resources.Resources;
 import lombok.experimental.UtilityClass;
@@ -15,6 +16,13 @@ import java.util.List;
  */
 @UtilityClass
 public class AssetUtils {
+
+    public static BufferedImage getSprite(String name, int index) {
+        Spritesheet spritesheet = Resources.spritesheets().get(name);
+        if (spritesheet == null)
+            return null;
+        return spritesheet.getSprite(index);
+    }
 
     public static List<BufferedImage> getImages(List<String> names) {
         final Images images = Resources.images();

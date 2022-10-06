@@ -1,15 +1,17 @@
 package me.rochblondiaux.ancientvalley;
 
 import de.gurkenlabs.litiengine.Game;
+import de.gurkenlabs.litiengine.GameWindow;
+import de.gurkenlabs.litiengine.gui.GuiProperties;
 import de.gurkenlabs.litiengine.gui.screens.Resolution;
 import de.gurkenlabs.litiengine.gui.screens.ScreenManager;
-import de.gurkenlabs.litiengine.resources.Fonts;
-import de.gurkenlabs.litiengine.resources.Images;
 import de.gurkenlabs.litiengine.resources.Resources;
-import de.gurkenlabs.litiengine.resources.Spritesheets;
 import lombok.extern.log4j.Log4j2;
+import me.rochblondiaux.ancientvalley.assets.AssetManager;
+import me.rochblondiaux.ancientvalley.game.GameState;
 import me.rochblondiaux.ancientvalley.game.screens.MenuScreen;
 
+import javax.swing.*;
 import java.awt.*;
 
 /**
@@ -46,51 +48,11 @@ public class AncientValley {
     }
 
     private void initializeAssets() {
-        Images images = Resources.images();
-
-        // Logo
-        images.add("logo", images.get("images/normal-logo.png"));
-        images.add("logo-minimalist", images.get("images/minimalist-logo.png"));
-
-        // Backgrounds
-        images.add("backgrounds.1.sky", images.get("images/backgrounds/1/sky.png"));
-        images.add("backgrounds.1.rocks", images.get("images/backgrounds/1/rocks_2.png"));
-        images.add("backgrounds.1.clouds1", images.get("images/backgrounds/1/clouds_1.png"));
-        images.add("backgrounds.1.clouds2", images.get("images/backgrounds/1/clouds_2.png"));
-        images.add("backgrounds.1.clouds3", images.get("images/backgrounds/1/clouds_3.png"));
-        images.add("backgrounds.1.clouds4", images.get("images/backgrounds/1/clouds_4.png"));
-
-        images.add("backgrounds.2.sky", images.get("images/backgrounds/2/sky.png"));
-        images.add("backgrounds.2.birds", images.get("images/backgrounds/2/birds.png"));
-        images.add("backgrounds.2.rocks", images.get("images/backgrounds/2/rocks_1.png"));
-        images.add("backgrounds.2.clouds1", images.get("images/backgrounds/2/clouds_1.png"));
-        images.add("backgrounds.2.clouds2", images.get("images/backgrounds/2/clouds_2.png"));
-        images.add("backgrounds.2.clouds3", images.get("images/backgrounds/2/clouds_3.png"));
-
-        images.add("backgrounds.3.sky", images.get("images/backgrounds/3/sky.png"));
-        images.add("backgrounds.3.plant", images.get("images/backgrounds/3/plant.png"));
-        images.add("backgrounds.3.rocks", images.get("images/backgrounds/3/rocks.png"));
-        images.add("backgrounds.3.ground1", images.get("images/backgrounds/3/ground_1.png"));
-        images.add("backgrounds.3.ground2", images.get("images/backgrounds/3/ground_2.png"));
-        images.add("backgrounds.3.ground3", images.get("images/backgrounds/3/ground_3.png"));
-        images.add("backgrounds.3.clouds1", images.get("images/backgrounds/3/clouds_1.png"));
-        images.add("backgrounds.3.clouds2", images.get("images/backgrounds/3/clouds_2.png"));
-
-        images.add("backgrounds.4.sky", images.get("images/backgrounds/4/sky.png"));
-        images.add("backgrounds.4.rocks", images.get("images/backgrounds/4/rocks.png"));
-        images.add("backgrounds.4.ground", images.get("images/backgrounds/4/ground.png"));
-        images.add("backgrounds.4.clouds1", images.get("images/backgrounds/4/clouds_1.png"));
-        images.add("backgrounds.4.clouds2", images.get("images/backgrounds/4/clouds_2.png"));
-
-        // Fonts
-        Fonts fonts = Resources.fonts();
-        fonts.add("fonts.default", fonts.get("fonts/MinimalPixel.ttf"));
-
-        // Spritesheets
-        Spritesheets spritesheets = Resources.spritesheets();
-        spritesheets.add("ui.buttons", spritesheets.load("images/ui/buttons.png", 53, 40));
-
-        // Sounds
+        // Menu
+        AssetManager.add(GameState.MENU, "assets/menu.resources");
+        AssetManager.loadAssets(GameState.MENU)
+                .thenAccept(unused -> GuiProperties.setDefaultFont(Resources.fonts().get("fonts.default")))
+                .join();
     }
 
     private void registerGameInformation() {
@@ -111,15 +73,16 @@ public class AncientValley {
 
     private void initializeWindow() {
         log.info("Initializing window...");
-        Game.window().setTitle("Ancient Valley");
-        Game.window().setResolution(Resolution.Ratio16x9.RES_1920x1080);
+        GameWindow window = Game.window();
+        window.setTitle("Ancient Valley");
+        window.setResolution(Resolution.Ratio16x9.RES_1920x1080);
         Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
-        Container container = Game.window().getHostControl();
+        Container container = window.getHostControl();
         int x = (int) ((dimension.getWidth() - container.getWidth()) / 2);
         int y = (int) ((dimension.getHeight() - container.getHeight()) / 2);
         container.setLocation(x, y);
 
-        Game.window().setIcon(Resources.images().get("logo"));
+        window.setIcon(Resources.images().get("logo"));
         log.info("Window initialized!");
     }
 

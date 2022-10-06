@@ -3,7 +3,6 @@ package me.rochblondiaux.ancientvalley.ui.components;
 import de.gurkenlabs.litiengine.graphics.ImageRenderer;
 import de.gurkenlabs.litiengine.gui.GuiComponent;
 import de.gurkenlabs.litiengine.gui.ImageComponent;
-import de.gurkenlabs.litiengine.resources.Resources;
 import de.gurkenlabs.litiengine.util.Imaging;
 import lombok.Getter;
 import me.rochblondiaux.ancientvalley.utils.AssetUtils;
@@ -26,7 +25,7 @@ public class GUIButton extends GuiComponent {
         super(x, y);
         this.type = type;
 
-        img = Imaging.scale(Resources.spritesheets().get("ui.buttons").getSprite(type), scale);
+        img = Imaging.scale(AssetUtils.getSprite("ui_buttons", type), scale);
         this.getComponents().add(new ImageComponent(getX(), getY(), img));
         setWidth(img.getWidth());
         setHeight(img.getHeight());

@@ -2,6 +2,12 @@ package me.rochblondiaux.ancientvalley.utils;
 
 import java.util.concurrent.*;
 
+/**
+ * AncientValley
+ *
+ * @author Roch Blondiaux
+ * @date 06/10/2022
+ */
 public class CompletablePromise<V> extends CompletableFuture<V> {
     private final Future<V> future;
 

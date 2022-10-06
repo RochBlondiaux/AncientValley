@@ -8,6 +8,12 @@ import me.rochblondiaux.ancientvalley.utils.CompletablePromise;
 import java.util.concurrent.CompletableFuture;
 import java.util.function.Function;
 
+/**
+ * AncientValley
+ *
+ * @author Roch Blondiaux
+ * @date 06/10/2022
+ */
 @FunctionalInterface
 public interface AssetInjector {
 

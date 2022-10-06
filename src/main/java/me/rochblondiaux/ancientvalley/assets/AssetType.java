@@ -5,6 +5,12 @@ import lombok.Getter;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * AncientValley
+ *
+ * @author Roch Blondiaux
+ * @date 06/10/2022
+ */
 @Getter
 public enum AssetType {
     IMAGE(AssetInjector.IMAGES, "png", "jpg", "jpeg", "gif", "bmp"),

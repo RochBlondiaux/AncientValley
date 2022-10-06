@@ -8,6 +8,8 @@ import de.gurkenlabs.litiengine.graphics.TextRenderer;
 import de.gurkenlabs.litiengine.resources.Resources;
 import de.gurkenlabs.litiengine.util.Imaging;
 import me.rochblondiaux.ancientvalley.constants.GameColors;
+import me.rochblondiaux.ancientvalley.game.GameManager;
+import me.rochblondiaux.ancientvalley.game.GameState;
 import me.rochblondiaux.ancientvalley.ui.components.AnimatedBackground;
 import me.rochblondiaux.ancientvalley.ui.components.GUIButton;
 
@@ -51,12 +53,12 @@ public class MenuScreen extends UpdatableScreen {
 
         // Play Button
         GUIButton playBtn = new GUIButton(0, 0, 0, 3);
-        // playBtn.onClicked(componentMouseEvent -> GameManager.setState(GameState.LOADING));
+        playBtn.onClicked(componentMouseEvent -> GameManager.setState(GameState.PLAYING));
         this.getComponents().add(playBtn);
 
         // Settings Button
         GUIButton settingsBtn = new GUIButton(4, 0, 0, 3);
-        // settingsBtn.onClicked(componentMouseEvent -> GameManager.setState(GameState.SETTINGS));
+        settingsBtn.onClicked(componentMouseEvent -> GameManager.setState(GameState.SETTINGS));
         this.getComponents().add(settingsBtn);
 
         // Exit Button

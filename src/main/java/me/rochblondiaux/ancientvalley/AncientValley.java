@@ -9,9 +9,11 @@ import de.gurkenlabs.litiengine.resources.Resources;
 import lombok.extern.log4j.Log4j2;
 import me.rochblondiaux.ancientvalley.assets.AssetManager;
 import me.rochblondiaux.ancientvalley.game.GameState;
+import me.rochblondiaux.ancientvalley.game.screens.InGameScreen;
 import me.rochblondiaux.ancientvalley.game.screens.MenuScreen;
+import me.rochblondiaux.ancientvalley.game.screens.PauseScreen;
+import me.rochblondiaux.ancientvalley.game.screens.SettingScreen;
 
-import javax.swing.*;
 import java.awt.*;
 
 /**
@@ -68,6 +70,9 @@ public class AncientValley {
         log.info("Registering game screens...");
         ScreenManager manager = Game.screens();
         manager.add(new MenuScreen());
+        manager.add(new PauseScreen());
+        manager.add(new SettingScreen());
+        manager.add(new InGameScreen());
         log.info("Game screens registered.");
     }
 

@@ -14,6 +14,12 @@ import java.awt.image.FilteredImageSource;
 import java.awt.image.ImageFilter;
 import java.awt.image.ImageProducer;
 
+/**
+ * AncientValley
+ *
+ * @author Roch Blondiaux
+ * @date 06/10/2022
+ */
 public class GUIButton extends GuiComponent {
 
 

@@ -12,6 +12,12 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * AncientValley
+ *
+ * @author Roch Blondiaux
+ * @date 06/10/2022
+ */
 public record AssetFileLoader(Path path) {
 
     private static final Logger log = Game.log();

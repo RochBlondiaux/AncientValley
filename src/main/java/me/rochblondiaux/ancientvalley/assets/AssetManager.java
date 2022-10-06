@@ -14,6 +14,12 @@ import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 import java.util.logging.Logger;
 
+/**
+ * AncientValley
+ *
+ * @author Roch Blondiaux
+ * @date 06/10/2022
+ */
 public class AssetManager {
 
     private static final Logger log = Game.log();
